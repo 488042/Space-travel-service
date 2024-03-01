@@ -1,0 +1,34 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is your full name? – {{serviceName}} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+})}}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="{{data.returnURL or 'address'}}" method="post">
+      
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--xl govuk-!-margin-bottom-8" for="full-name">What is your full name?</label>
+        </h1>
+        <input class="govuk-input" id="full-name" name="name" type="text" spellcheck="false" autocomplete="name" value="{{data.name}}">
+      </div>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">Continue</button>
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

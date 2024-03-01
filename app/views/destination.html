@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Where do you need to travel to in space? – {{serviceName}} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+})}}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="{{data.returnURL or 'name'}}" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl govuk-!-margin-bottom-8">
+            <h1 class="govuk-fieldset__heading">Where do you need to travel to in space?</h1>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="destination-1" name="destination" type="radio" value="Mars"{% if data.destination == "Mars" %} checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="destination-1">Mars</label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="destination-2" name="destination" type="radio" value="Moon"{% if data.destination == "Moon" %} checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="destination-2">Moon</label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">My destination is not listed</span>
+        </summary>
+
+        <div class="govuk-details__text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+
+      </details>
+      <button type="submit" class="govuk-button" data-module="govuk-button">Continue</button>
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}
